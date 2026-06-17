@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  "Calm ledger" — the design language of trust.
+  Green is RESERVED for earned completion (units allotted / payout paid / mandate live).
+  In-progress is calm blue; healthy waits are teal; recoverable errors are warm clay (never alarm-red).
+  This token system is what enforces the PRD rule: no success-green at "accepted".
+*/
+:root {
+  --ink: #103a3c;          /* deep teal — primary text & brand authority */
+  --ink-soft: #3f5d5e;     /* secondary text */
+  --paper: #faf6ee;        /* warm paper app surface */
+  --card: #ffffff;
+  --line: #e9e1d4;         /* hairline on paper */
+  --muted: #8a8378;        /* tertiary / captions */
+
+  --saffron: #e0852b;      /* brand accent & primary CTA — warmth, optimism, NOT green */
+  --saffron-ink: #7a3f06;  /* text on saffron tints */
+
+  --ok: #1e8a5a;           /* RESERVED success green */
+  --ok-bg: #e6f4ec;
+
+  --progress: #2f6db5;     /* calm blue — received / accepted / "we're on it" */
+  --progress-bg: #e8f0fa;
+
+  --wait: #2f7677;         /* teal — healthy pending / "money safe" */
+  --wait-bg: #e4f0ef;
+
+  --recover: #b6543b;      /* warm clay — recoverable error (not alarm red) */
+  --recover-bg: #fbeae4;
+
+  --urgent: #c9892a;       /* only in countdown's final minutes */
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: "Hanken Grotesk", system-ui, sans-serif;
+  color: var(--ink);
+  /* The desktop backdrop the phone frame sits on */
+  background:
+    radial-gradient(1200px 600px at 50% -10%, #16494b 0%, #0d3133 55%, #0a282a 100%);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Tabular figures everywhere money/amounts/countdowns appear */
+.tnum {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+.font-display {
+  font-family: "Bricolage Grotesque", Georgia, serif;
+}
+
+/* Subtle paper grain for depth without weight (cheap, single SVG noise) */
+.paper-grain {
+  position: relative;
+}
+.paper-grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
+
+/* Calm "breathing" pulse for a single pending node — not a frantic spinner */
+@keyframes breathe {
+  0%, 100% { opacity: 0.45; transform: scale(0.92); }
+  50% { opacity: 1; transform: scale(1.06); }
+}
+.breathe {
+  animation: breathe 2.4s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+.spin {
+  animation: spin 0.9s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .breathe,
+  .spin {
+    animation: none;
+  }
+}
+
+/* Scrollbars inside the phone frame, subtle */
+.scroll-area::-webkit-scrollbar { width: 0px; }
+
+/* Hide number input spinners */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] { -moz-appearance: textfield; }
