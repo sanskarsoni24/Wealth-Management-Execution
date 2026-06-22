@@ -114,7 +114,7 @@ export default function OrderProgress() {
               <p className="mt-1 text-[13.5px] text-ink-soft">of {order.schemeName} at ₹{order.nav?.toFixed(2)}.</p>
             </motion.div>
             <div className="mt-4 space-y-2">
-              <Button block variant="soft" onClick={() => navigate(`/sip/setup/${order.fundSlug}`)}>
+              <Button block variant="soft" onClick={() => navigate(`/invest/configure/${order.fundSlug}`)}>
                 Make this automatic — set up a monthly SIP
               </Button>
               <Button block variant="ghost" onClick={() => navigate("/home")}>See my investments</Button>

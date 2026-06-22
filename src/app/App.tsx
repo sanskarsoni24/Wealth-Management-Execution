@@ -11,8 +11,7 @@ import Home from "./screens/home/Home";
 
 // Purchase (§3.2)
 import FundDetail from "./screens/invest/FundDetail";
-import EnterAmount from "./screens/invest/EnterAmount";
-import ReviewOrder from "./screens/invest/ReviewOrder";
+import InvestConfigure from "./screens/invest/InvestConfigure";
 import OrderProgress from "./screens/invest/OrderProgress";
 import ChoosePayment from "./screens/invest/ChoosePayment";
 import PaymentScreen from "./screens/invest/PaymentScreen";
@@ -20,7 +19,6 @@ import NetBankingPay from "./screens/invest/NetBankingPay";
 import AutopayPay from "./screens/invest/AutopayPay";
 
 // SIP (§3.3)
-import SipSetup from "./screens/sip/SipSetup";
 import SipAutopay from "./screens/sip/SipAutopay";
 import SipConfirmed from "./screens/sip/SipConfirmed";
 import SipManage from "./screens/sip/SipManage";
@@ -53,8 +51,7 @@ function AnimatedRoutes() {
 
         {/* Purchase */}
         <Route path="/invest/fund/:scheme" element={<FundDetail />} />
-        <Route path="/invest/amount/:scheme" element={<EnterAmount />} />
-        <Route path="/invest/review/:scheme" element={<ReviewOrder />} />
+        <Route path="/invest/configure/:scheme" element={<InvestConfigure />} />
         <Route path="/invest/order/:orderId" element={<OrderProgress />} />
         <Route path="/invest/pay-method/:orderId" element={<ChoosePayment />} />
         <Route path="/invest/pay/:paymentId" element={<PaymentScreen />} />
@@ -62,7 +59,6 @@ function AnimatedRoutes() {
         <Route path="/invest/autopay-debit/:orderId" element={<AutopayPay />} />
 
         {/* SIP */}
-        <Route path="/sip/setup/:scheme" element={<SipSetup />} />
         <Route path="/sip/autopay/:scheme" element={<SipAutopay />} />
         <Route path="/sip/confirmed/:sipId" element={<SipConfirmed />} />
         <Route path="/sip/manage/:sipId" element={<SipManage />} />

@@ -78,10 +78,7 @@ export default function Home() {
                   </div>
                   <p className="mt-2 font-display text-[16px] font-semibold">{RECOMMENDED_FUND.name}</p>
                   <p className="mt-1 text-[12.5px] text-ink-soft">{RECOMMENDED_FUND.rationale}</p>
-                  <div className="mt-3 flex gap-2">
-                    <Button onClick={() => navigate(`/invest/fund/${RECOMMENDED_FUND.slug}`)}>Invest</Button>
-                    <Button variant="ghost" onClick={() => navigate(`/sip/setup/${RECOMMENDED_FUND.slug}`)}>Start a SIP</Button>
-                  </div>
+                  <Button className="mt-3" onClick={() => navigate(`/invest/fund/${RECOMMENDED_FUND.slug}`)}>Invest</Button>
                 </Card>
               </Reveal>
 
@@ -177,7 +174,6 @@ function SipBadge({ sip }: { sip: SipView }) {
 }
 
 function ZeroState({ onStart }: { onStart: () => void }) {
-  const navigate = useNavigate();
   const s = RECOMMENDED_FUND;
   return (
     <div className="flex flex-col items-center pt-6 text-center">
@@ -200,7 +196,6 @@ function ZeroState({ onStart }: { onStart: () => void }) {
           <p className="mt-2 font-display text-[17px] font-semibold">{s.name}</p>
           <p className="mt-1 text-[13px] text-ink-soft">{s.rationale}</p>
           <Button block className="mt-4" onClick={onStart}>Invest now</Button>
-          <Button block variant="ghost" className="mt-2" onClick={() => navigate(`/sip/setup/${s.slug}`)}>Or start a monthly SIP</Button>
         </Card>
       </Reveal>
       <Reveal delay={0.18}>

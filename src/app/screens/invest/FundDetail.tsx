@@ -34,12 +34,7 @@ export default function FundDetail() {
         footer={
           s.closedToNew
             ? <Button block disabled>Not accepting new investments</Button>
-            : (
-              <div className="space-y-2">
-                <Button block onClick={() => navigate(`/invest/amount/${s.slug}`)}>Invest once</Button>
-                <Button block variant="ghost" onClick={() => navigate(`/sip/setup/${s.slug}`)}>Set up a monthly SIP</Button>
-              </div>
-            )
+            : <Button block onClick={() => navigate(`/invest/configure/${s.slug}`)}>Invest</Button>
         }>
         <Reveal>
           <Pill tone="neutral">★ Research pick</Pill>
